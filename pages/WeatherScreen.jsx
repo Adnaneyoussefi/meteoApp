@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StatusBar, StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StatusBar, StyleSheet, View, ActivityIndicator } from 'react-native';
+import { Button, Center, Image, NativeBaseProvider, Stack, Text, Spinner, HStack, Heading } from "native-base";
 const axios = require('axios');
 
 export default function WeatherScreen({ navigation, route }){
@@ -10,6 +11,7 @@ export default function WeatherScreen({ navigation, route }){
     const [minTemperature, setMinTemperature] = useState();
     const [pressure, setPressure] = useState();
     const [humidity, setHumidity] = useState();
+    const [img, setImg] = useState('');
 
     const goToHome = function(){
         navigation.navigate("Home");
@@ -26,6 +28,7 @@ export default function WeatherScreen({ navigation, route }){
         setMinTemperature(res.data.main.temp_min);
         setPressure(res.data.main.pressure);
         setHumidity(res.data.main.humidity);
+        setImg(res.data.weather[0].icon);
         setLoading(false);
     }
 
@@ -35,11 +38,36 @@ export default function WeatherScreen({ navigation, route }){
 
     return(
         <View>
-            {loading ? <ActivityIndicator size="small" color="#0000ff" />
+            {loading ? 
+                        <Center>
+                            <Spinner size="lg" color="warning.500" accessibilityLabel="Loading posts" />
+                            <Heading color="warning.500" fontSize="lg">
+                                Loading
+                            </Heading>
+                        </Center>
             :
             <>
-            <Text>Temperature: {temperature}</Text>
-            <Button onPress={goToHome} title="Go To Home" />
+            <Stack direction="row" mb="2.5" mt="1.5" space={3}>
+                <Image 
+                    source={{
+                        uri: img
+                    }} 
+                    alt="Alternate Text" 
+                    size="md" 
+                />
+                <Text fontSize="3xl">{temperature} °C</Text>
+                <Stack mb="2.5" mt="1.5" direction="column" space={2}>
+                    <Text fontSize="xs">Max temperature: {maxTemperature} °C</Text>
+                    <Text fontSize="xs">Min temperature: {minTemperature} °C</Text>
+                    <Text fontSize="xs">Pressure: {pressure}</Text>
+                    <Text fontSize="xs">Humidité: {humidity}%</Text>
+                </Stack>
+            </Stack>
+            <Center px="3">
+                <Button onPress={goToHome} size="sm" colorScheme="warning">
+                    Go To Home
+                </Button>
+            </Center>
             </>
             }
         </View>

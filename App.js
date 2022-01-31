@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './pages/Home';
 import Apropos from './pages/Apropos';
 import WeatherScreen from './pages/WeatherScreen';
-import { Button, Box, Center, NativeBaseProvider } from "native-base";
+import { NativeBaseProvider } from "native-base";
 
 export default function App() {
 

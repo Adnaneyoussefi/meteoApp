@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, FlatList } from 'react-native';
-import { Button, Center } from "native-base";
+import { View, TouchableOpacity } from 'react-native';
+import { Box, FlatList, Heading, Avatar, HStack, VStack, Text, Spacer, Center, Button,
+    NativeBaseProvider } from "native-base";
+import { Entypo } from '@expo/vector-icons';
 
 export default function Home({ navigation }) {
 
     const villes = [
-        { nom: 'Fes', latitude: 34.0255702, longitude: -5.0028763 },
-        { nom: 'Casablanca', latitude: 33.5731104, longitude: -7.5898434 },
-        { nom: 'Marrakech', latitude: 31.630000, longitude: -8.008889 },
-        { nom: 'Tanger', latitude: 35.759465, longitude: -5.833954 },
-        { nom: 'Agadir', latitude: 30.427755, longitude: -9.598107 }
+        { nom: 'Fès - MA', latitude: 34.0255702, longitude: -5.0028763 },
+        { nom: 'Casablanca - MA', latitude: 33.5731104, longitude: -7.5898434 },
+        { nom: 'Marrakech - MA', latitude: 31.630000, longitude: -8.008889 },
+        { nom: 'Tanger - MA', latitude: 35.759465, longitude: -5.833954 },
+        { nom: 'Agadir - MA', latitude: 30.427755, longitude: -9.598107 }
     ];
 
     const goToApropos = () => {
@@ -22,18 +24,41 @@ export default function Home({ navigation }) {
 
     const afficherChaqueElement = ({ item }) => {
         return(
-            <TouchableOpacity onPress={() => goToWeatherScreen(item)}>
-                <Text>{item.nom}</Text>
-                <Text>{item.latitude}</Text>
+            <TouchableOpacity key={item.nom} onPress={() => goToWeatherScreen(item)}>
+                <Box borderBottomWidth="1" _dark={{
+                    borderColor: "gray.600"
+                    }} borderColor="coolGray.200" pl="4" pr="5" py="2">
+                <HStack space={3} justifyContent="space-between">
+                    <Entypo name="location-pin" size={24} color="gold" />
+                    <VStack>
+                        <Text _dark={{
+                            color: "warmGray.50"
+                            }} color="coolGray.800" bold>
+                            {item.nom}
+                        </Text>
+                        <Text color="coolGray.600" _dark={{
+                            color: "warmGray.200"
+                            }}>
+                            Latitude: {item.latitude} - Longitude: {item.longitude}
+                        </Text>
+                    </VStack>
+                    <Spacer />
+                    <Text fontSize="xs" _dark={{
+                        color: "warmGray.50"
+                        }} color="coolGray.800" alignSelf="flex-start">
+                        {item.timeStamp}
+                    </Text>
+                </HStack>
+                </Box>
             </TouchableOpacity>
         );
     }
 
     return(
         <View>
-            <Text>This is Home Screen</Text>
+            <Text>Weather App</Text>
             <FlatList data={villes} renderItem={afficherChaqueElement} />
-            <Center flex={1} px="3">
+            <Center px="3">
                 <Button onPress={goToApropos} size="sm" colorScheme="warning">
                     A propos de l'application
                 </Button>

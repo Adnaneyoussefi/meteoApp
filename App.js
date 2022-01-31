@@ -1,21 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './pages/Home';
+import Apropos from './pages/Apropos';
+import WeatherScreen from './pages/WeatherScreen';
+import { Button, Box, Center, NativeBaseProvider } from "native-base";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+  const Stack = createNativeStackNavigator();
+
+  return(
+    <NativeBaseProvider>
+      <NavigationContainer>
+          <Stack.Navigator initialRouteName='Home'>
+              <Stack.Screen name="Home" component={Home}/>
+              <Stack.Screen name="Apropos" component={Apropos}/>
+              <Stack.Screen name="WeatherScreen" component={WeatherScreen}/>
+          </Stack.Navigator>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
   },
 });

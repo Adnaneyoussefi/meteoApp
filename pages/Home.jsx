@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity } from 'react-native';
-import { Box, FlatList, Heading, Avatar, HStack, VStack, Text, Spacer, Center, Button,
-    NativeBaseProvider } from "native-base";
-import { Entypo } from '@expo/vector-icons';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Box, FlatList, HStack, VStack, Text, Spacer, Center, Button, Stack } from "native-base";
+import { Entypo, FontAwesome5 } from '@expo/vector-icons';
 
 export default function Home({ navigation }) {
 
@@ -56,13 +55,31 @@ export default function Home({ navigation }) {
 
     return(
         <View>
-            <Text>Weather App</Text>
+            <Center>
+                <Box alignItems="center" width="70%" rounded="8" bg="warning.500">
+                    <Stack direction="row" mb="2.5" mt="1.5" space={3}>
+                        <FontAwesome5 name="cloud-sun" size={24} color="black" />
+                        <Stack>
+                            <Text fontSize="2xl">Weather App</Text>
+                            <Text fontSize="xs">This application is designed and developed
+                            dqsdfdsfds dfsf fdsfsdkjlmkùlkj kjljkl klj klj</Text>
+                        </Stack>
+                    </Stack>
+                    
+                </Box>
+            </Center>
             <FlatList data={villes} renderItem={afficherChaqueElement} />
             <Center px="3">
                 <Button onPress={goToApropos} size="sm" colorScheme="warning">
-                    A propos de l'application
+                    A PROPOS DE L'APPLICATION
                 </Button>
             </Center>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+      backgroundColor: '#F39C12',
+    }
+  });

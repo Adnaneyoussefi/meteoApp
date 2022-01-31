@@ -65,7 +65,7 @@ export default function WeatherScreen({ navigation, route }){
             </Stack>
             <Center px="3">
                 <Button onPress={goToHome} size="sm" colorScheme="warning">
-                    Go To Home
+                    PAGE PRINCIPALE
                 </Button>
             </Center>
             </>

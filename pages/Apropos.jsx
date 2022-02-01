@@ -9,7 +9,7 @@ export default function Apropos({ navigation }){
     }
 
     return(
-        <View>
+        <View style={styles.app}>
             <Center px="3">
                 <Image 
                     source={require('../assets/www.jpg')}
@@ -27,7 +27,7 @@ export default function Apropos({ navigation }){
                 <Text fonSize="xs">
                     This application is designed and developed
                 </Text>
-                <Button onPress={goToButtonHome} size="sm" colorScheme="warning">
+                <Button onPress={goToButtonHome} size="sm" style={styles.container}>
                     REVENIR A LA PAGE PRINCIPALE
                 </Button>
             </Center>
@@ -36,6 +36,16 @@ export default function Apropos({ navigation }){
 }
 
 const styles = StyleSheet.create({
+    app: {
+        flex:1,
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    container: {
+        backgroundColor: '#F39C12',
+        marginTop: '20px'
+    },
     text: {
       color: '#F39C12'
     }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { Box, FlatList, HStack, VStack, Text, Spacer, Center, Button, Stack } from "native-base";
 import { Entypo, FontAwesome5 } from '@expo/vector-icons';
 
@@ -49,23 +49,22 @@ export default function Home({ navigation }) {
     }
 
     return(
-        <View>
+        <View style={styles.app}>
             <Center>
-                <Box alignItems="center" width="70%" rounded="8" bg="warning.500">
-                    <Stack direction="row" mb="2.5" mt="1.5" space={3}>
-                        <FontAwesome5 name="cloud-sun" size={24} color="black" />
-                        <Stack>
-                            <Text fontSize="2xl">Weather App</Text>
+                <Box width="60%" rounded="8" style={styles.container}>
+                    <HStack m="2" space={3}>
+                        <FontAwesome5 name="cloud-sun" size={26} color="white" />
+                        <Stack style={{ flexShrink: 1 }}>
+                            <Text fontSize="2xl" bold>Weather App</Text>
                             <Text fontSize="xs">This application is designed and developed
                             dqsdfdsfds dfsf fdsfsdkjlmkùlkj kjljkl klj klj</Text>
-                        </Stack>
-                    </Stack>
-                    
+                        </Stack>  
+                    </HStack>
                 </Box>
             </Center>
             <FlatList data={villes} renderItem={afficherChaqueElement} />
             <Center px="3">
-                <Button onPress={goToApropos} size="sm" colorScheme="warning">
+                <Button onPress={goToApropos} size="sm" style={styles.container}>
                     A PROPOS DE L'APPLICATION
                 </Button>
             </Center>
@@ -76,5 +75,8 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
     container: {
       backgroundColor: '#F39C12',
+    },
+    app: {
+        marginTop: '100px'        
     }
   });

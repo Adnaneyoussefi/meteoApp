@@ -14,11 +14,26 @@ export default function App() {
   return(
     <NativeBaseProvider>
       <NavigationContainer>
-          <Stack.Navigator initialRouteName='Home'>
-            <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Apropos" component={Apropos}/>
-            <Stack.Screen name="WeatherScreen" component={WeatherScreen}/>
-          </Stack.Navigator>
+        <Stack.Navigator initialRouteName='Home'>
+          <Stack.Screen name="Home" component={Home} options={{ headerStyle: {
+              backgroundColor: '#F39C12'
+            }, headerTitleAlign: "center", headerTintColor: '#fff' }}/>
+          <Stack.Screen name="Apropos" component={Apropos} options={{ title: 'A propoos', headerStyle: {
+              backgroundColor: '#F39C12'
+            }, headerTitleAlign: "center", headerTintColor: '#fff'}}/>
+          <Stack.Screen name="WeatherScreen" component={WeatherScreen} 
+          options={({ route }) => ({
+            title: route.params.item.nom, 
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: '#F39C12',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            }, 
+          })}/>
+        </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
   );

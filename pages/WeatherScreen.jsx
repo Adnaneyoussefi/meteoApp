@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Button, Center, Image, Stack, Text, Spinner, Heading } from "native-base";
 const axios = require('axios');
 
@@ -37,11 +37,11 @@ export default function WeatherScreen({ navigation, route }){
     }, []);
 
     return(
-        <View>
+        <View style={styles.app}>
             {loading ? 
                         <Center>
-                            <Spinner size="lg" color="warning.500" accessibilityLabel="Loading posts" />
-                            <Heading color="warning.500" fontSize="lg">
+                            <Spinner size="lg" color="#F39C12" accessibilityLabel="Loading posts" />
+                            <Heading color="#F39C12" fontSize="lg">
                                 Loading
                             </Heading>
                         </Center>
@@ -64,7 +64,7 @@ export default function WeatherScreen({ navigation, route }){
                 </Stack>
             </Stack>
             <Center px="3">
-                <Button onPress={goToHome} size="sm" colorScheme="warning">
+                <Button onPress={goToHome} size="sm" style={styles.container}>
                     PAGE PRINCIPALE
                 </Button>
             </Center>
@@ -73,3 +73,15 @@ export default function WeatherScreen({ navigation, route }){
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    app: {
+        flex:1,
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    container: {
+      backgroundColor: '#F39C12',
+    }
+  });

@@ -27,27 +27,22 @@ export default function Home({ navigation }) {
                 <Box borderBottomWidth="1" _dark={{
                     borderColor: "gray.600"
                     }} borderColor="coolGray.200" pl="4" pr="5" py="2">
-                <HStack space={3} justifyContent="space-between">
-                    <Entypo name="location-pin" size={24} color="gold" />
-                    <VStack>
-                        <Text _dark={{
-                            color: "warmGray.50"
-                            }} color="coolGray.800" bold>
-                            {item.nom}
-                        </Text>
-                        <Text color="coolGray.600" _dark={{
-                            color: "warmGray.200"
-                            }}>
-                            Latitude: {item.latitude} - Longitude: {item.longitude}
-                        </Text>
-                    </VStack>
-                    <Spacer />
-                    <Text fontSize="xs" _dark={{
-                        color: "warmGray.50"
-                        }} color="coolGray.800" alignSelf="flex-start">
-                        {item.timeStamp}
-                    </Text>
-                </HStack>
+                    <HStack space={3} justifyContent="space-between">
+                        <Entypo name="location-pin" size={24} color="gold" />
+                        <VStack>
+                            <Text _dark={{
+                                color: "warmGray.50"
+                                }} color="coolGray.800" bold>
+                                {item.nom}
+                            </Text>
+                            <Text color="coolGray.600" _dark={{
+                                color: "warmGray.200"
+                                }}>
+                                Latitude: {item.latitude} - Longitude: {item.longitude}
+                            </Text>
+                        </VStack>
+                        <Spacer />
+                    </HStack>
                 </Box>
             </TouchableOpacity>
         );

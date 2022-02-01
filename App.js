@@ -15,9 +15,9 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
           <Stack.Navigator initialRouteName='Home'>
-              <Stack.Screen name="Home" component={Home}/>
-              <Stack.Screen name="Apropos" component={Apropos}/>
-              <Stack.Screen name="WeatherScreen" component={WeatherScreen}/>
+            <Stack.Screen name="Home" component={Home}/>
+            <Stack.Screen name="Apropos" component={Apropos}/>
+            <Stack.Screen name="WeatherScreen" component={WeatherScreen}/>
           </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

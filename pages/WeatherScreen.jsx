@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, StyleSheet, View, ActivityIndicator } from 'react-native';
-import { Button, Center, Image, NativeBaseProvider, Stack, Text, Spinner, HStack, Heading } from "native-base";
+import { View } from 'react-native';
+import { Button, Center, Image, Stack, Text, Spinner, Heading } from "native-base";
 const axios = require('axios');
 
 export default function WeatherScreen({ navigation, route }){
